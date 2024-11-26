@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ClinicManagement</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <link rel="stylesheet" href="/assets/stylesheets/style.css">
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+
+    <header>
+    <nav>
+      <ul>
+        <!-- Add other links as necessary -->
+        <%# <li><%= link_to 'Home', root_path %></li>
+
+        <% if user_signed_in? %>
+          <!-- Display the user's name and the sign out button -->
+          <li>Hello, <%= current_user.email %></li>
+          <li>
+            <%= button_to destroy_user_session_path, method: :delete, class: 'sign-out-button' do %>
+              Sign Out
+            <% end %>
+          </li>
+        <% else %>
+          <li><%= link_to 'Sign In', new_user_session_path %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </header>
+
+    <%= yield %>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!-- receptionist new.html.erb page -->
+<div class="receptionist-dashboard">
+  <h1>Register New Patient</h1>
+
+  <%= form_with(model: @patient, url: receptionists_path, local: true) do |form| %>
+    <% if @patient.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
+        <ul>
+          <% @patient.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :first_name %>
+      <%= form.text_field :first_name %>
+    </div>
+
+    <div class="field">
+      <%= form.label :last_name %>
+      <%= form.text_field :last_name %>
+    </div>
+
+    <div class="field">
+      <%= form.label :dob %>
+      <%= form.date_field :dob %>
+    </div>
+
+    <div class="field">
+      <%= form.label :phone %>
+      <%= form.text_field :phone %>
+    </div>
+
+    <div class="field">
+      <%= form.label :address %>
+      <%= form.text_area :address %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit 'Register Patient' %>
+    </div>
+  <% end %>
+
+  <%= link_to 'Back to Patient List', receptionists_path, class: 'link' %>
+</div>

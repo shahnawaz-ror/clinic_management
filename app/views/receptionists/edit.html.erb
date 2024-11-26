@@ -1,0 +1,22 @@
+<h1>Edit Patient</h1>
+
+<%= form_with model: @patient, url: receptionist_path(@patient), method: :patch do |f| %>
+  <div>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div>
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div>
+    <%= f.label :dob %>
+    <%= f.date_select :dob %>
+  </div>
+
+  <div>
+    <%= f.submit "Save" %>
+  </div>
+<% end %>
